@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
 
-    <link rel="icon" href="{{ asset('images/bateaux.png') }}">
+    <link rel="icon" href="">
 
     {{-- CSS classique --}}
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
     {{-- sweetalert2 --}}
    <link rel="stylesheet" href="{{ asset('sweetalert/dist/sweetalert2.min.css') }}">
@@ -22,8 +21,7 @@
     {{-- Laravel Vite (tailwind, app.js, etc.) --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    {{-- Stacks (si tu veux injecter du CSS/JS par page) --}}
-    @stack('styles')
+
 </head>
 <body>
     {{-- Navbar Jetstream (désactivée pour l’instant) --}}
