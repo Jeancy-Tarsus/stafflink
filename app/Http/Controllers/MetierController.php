@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreMetierRequest;
+use App\Http\Requests\UpdateMetierRequest;
 use App\Models\Metier;
 use Illuminate\Http\Request;
 
@@ -13,6 +15,9 @@ class MetierController extends Controller
     public function index()
     {
         //
+        $metiers = Metier::latest()->paginate(10);
+
+        return view('metiers.index', compact('metiers'));
     }
 
     /**
@@ -26,9 +31,15 @@ class MetierController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreMetierRequest $request)
     {
-        //
+
+        Metier::create($request->validated());
+
+
+        return redirect()
+            ->route('metiers.index')
+            ->with('success', 'Métier ajouté avec succès.');
     }
 
     /**
@@ -50,9 +61,15 @@ class MetierController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Metier $metier)
+    public function update(UpdateMetierRequest $request, Metier $metier)
     {
-        //
+
+        $metier->update($request->validated());
+
+
+        return redirect()
+            ->route('metiers.index')
+            ->with('success', 'Métier modifié avec succès.');
     }
 
     /**
@@ -60,6 +77,12 @@ class MetierController extends Controller
      */
     public function destroy(Metier $metier)
     {
-        //
+
+        $metier->delete();
+
+
+        return redirect()
+            ->route('metiers.index')
+            ->with('success', 'Métier supprimé avec succès.');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateMetierRequest extends FormRequest
 {
@@ -12,7 +13,7 @@ class UpdateMetierRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -20,10 +21,42 @@ class UpdateMetierRequest extends FormRequest
      *
      * @return array<string, ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+     public function rules(): array
     {
         return [
-            //
+
+            'nom' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('metiers', 'nom')
+                    ->ignore($this->metier)
+            ],
+
+            'description' => [
+                'nullable',
+                'string'
+            ],
+
+            'actif' => [
+                'required',
+                'boolean'
+            ],
+
+        ];
+    }
+
+
+    public function messages(): array
+    {
+        return [
+
+            'nom.required' => 'Le nom du métier est obligatoire.',
+
+            'nom.unique' => 'Ce métier existe déjà.',
+
+            'actif.required' => 'Veuillez sélectionner un statut.',
+
         ];
     }
 }

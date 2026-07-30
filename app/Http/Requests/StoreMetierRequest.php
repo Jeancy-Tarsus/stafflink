@@ -23,9 +23,39 @@ class StoreMetierRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nom' => 'required|string|max:100|unique:metiers,nom',
-            'description' => 'nullable|string',
-            'actif' => 'boolean',
+
+            'nom' => [
+                'required',
+                'string',
+                'max:255',
+                'unique:metiers,nom'
+            ],
+
+            'description' => [
+                'nullable',
+                'string'
+            ],
+
+            'actif' => [
+                'required',
+                'boolean'
+            ],
+
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+
+            'nom.required' => 'Le nom du métier est obligatoire.',
+
+            'nom.unique' => 'Ce métier existe déjà.',
+
+            'nom.max' => 'Le nom du métier ne doit pas dépasser 255 caractères.',
+
+            'actif.required' => 'Veuillez choisir un statut.',
+
         ];
     }
 }
