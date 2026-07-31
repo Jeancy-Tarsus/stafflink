@@ -46,8 +46,7 @@
 
             <div class="table-responsive">
 
-                <table class="table table-bordered table-hover">
-
+                <table class="table table-bordered table-hover table-striped align-middle">
                     <thead class="thead-light">
 
                         <tr>
@@ -68,11 +67,10 @@
                             <tr>
 
                                 <td>
-                                    {{ $loop->iteration }}
+                                    {{ $metiers->firstItem() + $loop->index }}
                                 </td>
 
                                 <td>
-                                    <i class="fas fa-user-tie text-primary"></i>
                                     {{ $metier->nom }}
                                 </td>
 
@@ -99,24 +97,29 @@
                                 </td>
 
                                 <td>
+                                    <div class="btn-group" role="group">
 
+                                        <button type="button"
+                                                class="btn btn-warning btn-sm"
+                                                data-toggle="modal"
+                                                data-target="#modalEditMetier{{ $metier->id }}"
+                                                data-backdrop="static"
+                                                title="Modifier">
 
-                                    <button class="btn btn-warning btn-sm"
-                                            data-toggle="modal"
-                                            data-target="#modalEditMetier{{ $metier->id }}"
-                                            data-backdrop="static" >
+                                            <i class="fas fa-edit"></i>
 
-                                        <i class="fas fa-edit"></i>
+                                        </button>
 
-                                    </button>
+                                        <button type="button"
+                                                class="btn btn-danger btn-sm"
+                                                onclick="confirmDelete({{ $metier->id }})"
+                                                title="Supprimer">
 
-                                    <button class="btn btn-danger btn-sm"
-                                            onclick="confirmDelete({{ $metier->id }})">
+                                            <i class="fas fa-trash"></i>
 
-                                        <i class="fas fa-trash"></i>
+                                        </button>
 
-                                    </button>
-
+                                    </div>
                                 </td>
 
 
@@ -202,47 +205,33 @@
 </form>
 <script>
 
-function confirmDelete(id)
-{
+    function confirmDelete(id)
+    {
+        Swal.fire({
+            title: 'Êtes-vous sûr ?',
+            text: "Cette action est irréversible !",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Oui, supprimer',
+            cancelButtonText: 'Annuler'
+        }).then((result) => {
 
-    Swal.fire({
+            if (result.isConfirmed) {
 
-        title: 'Êtes-vous sûr ?',
+                let form = document.getElementById('delete-form');
 
-        text: "Cette action est irréversible !",
+                let url = "{{ route('metiers.destroy', ':id') }}";
+                url = url.replace(':id', id);
 
-        icon: 'warning',
+                form.action = url;
 
-        showCancelButton: true,
+                form.submit();
+            }
 
-        confirmButtonColor: '#d33',
-
-        cancelButtonColor: '#3085d6',
-
-        confirmButtonText: 'Oui supprimer',
-
-        cancelButtonText: 'Annuler'
-
-
-    }).then((result)=>{
-
-
-        if(result.isConfirmed)
-        {
-
-            let form = document.getElementById('delete-form');
-
-            form.action = "/metiers/" + id;
-
-            form.submit();
-
-        }
-
-
-    });
-
-
-}
+        });
+    }
 
 </script>
 @stop

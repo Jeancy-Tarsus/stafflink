@@ -12,4 +12,9 @@ class Metier extends Model
         'description',
         'actif',
     ];
+
+      public function travailleurs()
+    {
+        return $this->hasMany(Travailleur::class);
+    }
 }
