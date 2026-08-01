@@ -37,5 +37,9 @@ Route::middleware(['auth'])->group(function () {
 Route::resource('travailleurs', TravailleurController::class);
 
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\DemandeController;
 
 Route::resource('clients', ClientController::class);
+
+
+Route::resource('demandes', DemandeController::class);

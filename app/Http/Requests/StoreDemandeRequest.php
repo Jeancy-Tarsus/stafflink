@@ -12,7 +12,7 @@ class StoreDemandeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,21 @@ class StoreDemandeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+
+            'client_id' => 'required|exists:clients,id',
+
+            'metier_id' => 'required|exists:metiers,id',
+
+            'nombre' => 'required|integer|min:1',
+
+            'date_debut' => 'required|date',
+
+            'date_fin' => 'nullable|date|after_or_equal:date_debut',
+
+            'urgence' => 'required|in:Normale,Urgente,Très urgente',
+
+            'observation' => 'nullable|string',
+
         ];
     }
 }

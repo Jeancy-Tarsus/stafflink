@@ -31,4 +31,10 @@ class Client extends Model
         'observation',
 
     ];
+
+    public function demandes()
+    {
+        return $this->hasMany(Demande::class);
+    }
+    
 }

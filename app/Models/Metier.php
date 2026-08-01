@@ -13,8 +13,13 @@ class Metier extends Model
         'actif',
     ];
 
-      public function travailleurs()
+    public function travailleurs()
     {
         return $this->hasMany(Travailleur::class);
+    }
+
+    public function demandes()
+    {
+        return $this->hasMany(Demande::class);
     }
 }
