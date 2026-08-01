@@ -43,3 +43,13 @@ Route::resource('clients', ClientController::class);
 
 
 Route::resource('demandes', DemandeController::class);
+
+use App\Http\Controllers\AffectationController;
+
+Route::get(
+    'affectations/travailleurs/{demande}',
+    [AffectationController::class, 'getTravailleurs']
+)->name('affectations.travailleurs');
+
+
+Route::resource('affectations', AffectationController::class);
