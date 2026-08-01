@@ -54,4 +54,9 @@ class Demande extends Model
     {
         return $this->nombre - $this->nombre_affectes;
     }
+
+    public function affectations()
+    {
+        return $this->hasMany(Affectation::class);
+    }
 }

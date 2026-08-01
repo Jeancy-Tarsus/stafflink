@@ -36,4 +36,9 @@ class Travailleur extends Model
     {
         return $this->belongsTo(Metier::class);
     }
+
+    public function affectations()
+    {
+        return $this->hasMany(Affectation::class);
+    }
 }
