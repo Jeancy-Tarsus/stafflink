@@ -54,4 +54,11 @@ class Affectation extends Model
     {
         return $this->belongsTo(Travailleur::class);
     }
+
+    public function contrat()
+    {
+        return $this->hasOne(Contrat::class);
+    }
+
+    
 }

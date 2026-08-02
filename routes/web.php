@@ -59,3 +59,7 @@ use App\Http\Controllers\DashboardController;
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+
+use App\Http\Controllers\ContratController;
+
+Route::resource('contrats', ContratController::class);
