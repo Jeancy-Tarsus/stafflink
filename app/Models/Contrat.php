@@ -20,6 +20,8 @@ class Contrat extends Model
 
         'salaire',
 
+        'montant_client',
+
         'statut',
 
         'observation'
@@ -46,4 +48,25 @@ class Contrat extends Model
     {
         return $this->belongsTo(Affectation::class);
     }
+
+    public function facture()
+    {
+        return $this->hasOne(Facture::class);
+    }
+
+    public function paiements()
+    {
+        return $this->hasMany(Paiement::class);
+    }
+
+    public function getMontantPayeAttribute()
+    {
+        return $this->paiements()->sum('montant');
+    }
+
+    public function getResteAPayerAttribute()
+    {
+        return $this->salaire - $this->montant_paye;
+    }
+
 }

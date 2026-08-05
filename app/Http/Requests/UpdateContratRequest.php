@@ -26,6 +26,8 @@ class UpdateContratRequest extends FormRequest
             'statut' => 'required|in:Actif,Terminé,Résilié',
 
             'observation' => 'nullable|string',
+            
+            'montant_client' => 'required|numeric|min:1',
 
         ];
     }

@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Staff</b>Link',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -297,14 +297,16 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Menu-Configuration
     |
     */
-
+    //
     'menu' => [
         // Navbar items:
+
         [
             'type' => 'navbar-search',
             'text' => 'search',
             'topnav_right' => true,
         ],
+
         [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
@@ -315,83 +317,95 @@ return [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
         ],
+
         [
-            'text' => 'blog',
-            'url' => 'admin/blog',
-            'can' => 'manage-blog',
+            'text' => 'Dashboard',
+            'url'  => 'dashboard',
+            'icon' => 'fas fa-tachometer-alt',
         ],
+
         [
-            'text' => 'pages',
-            'url' => 'admin/pages',
-            'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
+            'header' => 'GESTION',
         ],
-        ['header' => 'account_settings'],
+
         [
-            'text' => 'profile',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Métiers',
+            'url'  => 'metiers',
+            'icon' => 'fas fa-briefcase',
         ],
+
         [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Travailleurs',
+            'url'  => 'travailleurs',
+            'icon' => 'fas fa-users',
         ],
+
         [
-            'text' => 'multilevel',
-            'icon' => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                ],
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                        ],
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                ],
-            ],
+            'text' => 'Clients',
+            'url'  => 'clients',
+            'icon' => 'fas fa-building',
         ],
-        ['header' => 'labels'],
+
         [
-            'text' => 'important',
-            'icon_color' => 'red',
-            'url' => '#',
+            'text' => 'Demandes',
+            'url'  => 'demandes',
+            'icon' => 'fas fa-clipboard-list',
         ],
+
         [
-            'text' => 'warning',
-            'icon_color' => 'yellow',
-            'url' => '#',
+            'text' => 'Affectations',
+            'url'  => 'affectations',
+            'icon' => 'fas fa-user-check',
         ],
+
         [
-            'text' => 'information',
-            'icon_color' => 'cyan',
-            'url' => '#',
+            'text' => 'Contrats',
+            'url'  => 'contrats',
+            'icon' => 'fas fa-file-signature',
         ],
+
+        [
+            'header' => 'FINANCES',
+        ],
+
+        [
+            'text' => 'Factures',
+            'url'  => 'factures',
+            'icon' => 'fas fa-file-invoice-dollar',
+        ],
+
+        [
+            'text' => 'Encaissements',
+            'url'  => 'encaissements',
+            'icon' => 'fas fa-cash-register',
+        ],
+
+        [
+            'text' => 'Paiements',
+            'url'  => 'paiements',
+            'icon' => 'fas fa-money-check-alt',
+        ],
+
+        [
+            'header' => 'RAPPORTS',
+        ],
+
+        [
+            'text' => 'Rapports',
+            'url'  => 'rapports',
+            'icon' => 'fas fa-chart-bar',
+        ],
+
+        [
+            'header' => 'CONFIGURATION',
+        ],
+
+        [
+            'text' => 'Paramètres',
+            'url'  => 'parametres',
+            'icon' => 'fas fa-cogs',
+        ],
+
     ],
 
     /*

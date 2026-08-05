@@ -25,6 +25,8 @@ class StoreContratRequest extends FormRequest
 
             'salaire' => 'required|numeric|min:0',
 
+            'montant_client' => 'required|numeric|min:1',
+
             'observation' => 'nullable|string',
 
         ];

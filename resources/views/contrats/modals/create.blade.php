@@ -165,6 +165,30 @@
 
                                 <label>
 
+                                    Montant facturé au client (FCFA)
+
+                                </label>
+
+                                <input type="number"
+                                    step="0.01"
+                                    name="montant_client"
+                                    class="form-control"
+                                    required>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                            <div class="form-group">
+
+                                <label>
+
                                     Observation
 
                                 </label>
@@ -176,10 +200,6 @@
                             </div>
 
                         </div>
-
-                    </div>
-
-                </div>
 
                 <div class="modal-footer">
 

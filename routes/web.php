@@ -63,3 +63,12 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 use App\Http\Controllers\ContratController;
 
 Route::resource('contrats', ContratController::class);
+
+use App\Http\Controllers\FactureController;
+
+Route::resource('factures', FactureController::class);
+
+
+use App\Http\Controllers\EncaissementController;
+
+Route::resource('encaissements', EncaissementController::class);

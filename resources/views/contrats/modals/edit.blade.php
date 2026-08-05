@@ -155,6 +155,7 @@
 
                     </div>
 
+
                     <div class="row">
 
                         <div class="col-md-6">
@@ -164,11 +165,28 @@
                                 <label>Salaire</label>
 
                                 <input type="number"
-                                       step="0.01"
-                                       name="salaire"
-                                       class="form-control"
-                                       value="{{ $contrat->salaire }}"
-                                       required>
+                                    step="0.01"
+                                    name="salaire"
+                                    class="form-control"
+                                    value="{{ $contrat->salaire }}"
+                                    required>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+
+                                <label>Montant facturé au client (FCFA)</label>
+
+                                <input type="number"
+                                    step="0.01"
+                                    name="montant_client"
+                                    class="form-control"
+                                    value="{{ $contrat->montant_client }}"
+                                    required>
 
                             </div>
 
@@ -184,24 +202,18 @@
                                         class="form-control">
 
                                     <option value="Actif"
-                                        {{ $contrat->statut=='Actif' ? 'selected' : '' }}>
-
+                                        {{ $contrat->statut == 'Actif' ? 'selected' : '' }}>
                                         Actif
-
                                     </option>
 
                                     <option value="Terminé"
-                                        {{ $contrat->statut=='Terminé' ? 'selected' : '' }}>
-
+                                        {{ $contrat->statut == 'Terminé' ? 'selected' : '' }}>
                                         Terminé
-
                                     </option>
 
                                     <option value="Résilié"
-                                        {{ $contrat->statut=='Résilié' ? 'selected' : '' }}>
-
+                                        {{ $contrat->statut == 'Résilié' ? 'selected' : '' }}>
                                         Résilié
-
                                     </option>
 
                                 </select>
