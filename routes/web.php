@@ -72,3 +72,8 @@ Route::resource('factures', FactureController::class);
 use App\Http\Controllers\EncaissementController;
 
 Route::resource('encaissements', EncaissementController::class);
+
+
+use App\Http\Controllers\PaiementController;
+
+Route::resource('paiements', PaiementController::class);
