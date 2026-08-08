@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'StaffLink',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,12 +63,29 @@ return [
     |
     */
 
+    // 'logo' => '<b>Staff</b>Link',
+    // 'logo_img' => 'images/logo.png',
+    // // 'logo_img_class' => 'brand-image img-circle elevation-3',
+    // 'logo_img_class' => 'brand-image img-circle elevation-3 elevation-2',
+    // 'logo_img_xl' => null,
+    // 'logo_img_xl_class' => 'brand-image-xs',
+    // 'logo_img_alt' => 'StaffLink Logo',
+
+
     'logo' => '<b>Staff</b>Link',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+
+    'logo_img' => 'images/logo.png',
+
+    'logo_img_class' => 'brand-image elevation-3',
+
     'logo_img_xl' => null,
+
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+
+    'logo_img_alt' => 'StaffLink Logo',
+
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -113,11 +130,11 @@ return [
         'enabled' => true,
         'mode' => 'fullscreen',
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-            'alt' => 'AdminLTE Preloader Image',
-            'effect' => 'animation__shake',
-            'width' => 60,
-            'height' => 60,
+            'path' => 'images/preloader.png',
+            'alt' => 'StaffLink',
+            'effect' => 'animation__pulse',
+            'width' => 200,
+            'height' => 150,
         ],
     ],
 
@@ -154,8 +171,10 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
-    'layout_fixed_navbar' => null,
+    // 'layout_fixed_sidebar' => null,
+    'layout_fixed_sidebar' => true,
+    // 'layout_fixed_navbar' => null,
+    'layout_fixed_navbar' => true,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
 
@@ -444,7 +463,7 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
@@ -464,7 +483,7 @@ return [
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
@@ -479,7 +498,7 @@ return [
             ],
         ],
         'Chartjs' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
@@ -489,7 +508,7 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

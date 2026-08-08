@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignId('affectation_id')
                 ->constrained()
                 ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+                ->restrictOnDelete();
 
             // Date de signature
             $table->date('date_signature');
@@ -44,7 +44,7 @@ return new class extends Migration
 
             // Observation
             $table->text('observation')->nullable();
-            
+
             $table->timestamps();
         });
     }

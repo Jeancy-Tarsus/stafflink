@@ -38,15 +38,18 @@
 
                         <label>Demande</label>
 
-                        <select name="demande_id"
-                                class="form-control"
-                                required>
+                       <select name="demande_id"
+                        id="demande_id"
+                        class="form-control"
+                        required>
 
                             <option value="">Sélectionner une demande</option>
 
                             @foreach($demandes as $demande)
 
-                                <option value="{{ $demande->id }}">
+                              <option
+                                    value="{{ $demande->id }}"
+                                    data-metier="{{ $demande->metier_id }}">
 
                                     {{ $demande->reference }}
                                     -
@@ -67,14 +70,17 @@
                         <label>Travailleur</label>
 
                         <select name="travailleur_id"
-                                class="form-control"
-                                required>
+                            id="travailleur_id"
+                            class="form-control"
+                            required>
 
                             <option value="">Sélectionner un travailleur</option>
 
                             @foreach($travailleurs as $travailleur)
 
-                                <option value="{{ $travailleur->id }}">
+                                <option
+                                    value="{{ $travailleur->id }}"
+                                    data-metier="{{ $travailleur->metier_id }}">
 
                                     {{ $travailleur->nom }}
                                     {{ $travailleur->prenom }}
@@ -161,3 +167,29 @@
     </div>
 
 </div>
+
+<script>
+
+$('#demande_id').change(function () {
+
+    let metier = $(this).find(':selected').data('metier');
+
+    $('#travailleur_id option').hide();
+
+    $('#travailleur_id option:first').show();
+
+    $('#travailleur_id option').each(function () {
+
+        if ($(this).data('metier') == metier) {
+
+            $(this).show();
+
+        }
+
+    });
+
+    $('#travailleur_id').val('');
+
+});
+
+</script>

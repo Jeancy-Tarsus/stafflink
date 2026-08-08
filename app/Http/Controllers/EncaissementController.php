@@ -133,17 +133,28 @@ class EncaissementController extends Controller
      */
     public function destroy(Encaissement $encaissement)
     {
-        $facture = $encaissement->facture;
+        try {
 
-        $encaissement->delete();
+            $facture = $encaissement->facture;
 
-        $facture->mettreAJourStatut();
+            $encaissement->delete();
 
-        return redirect()
-            ->route('encaissements.index')
-            ->with(
-                'success',
-                'Encaissement supprimé avec succès.'
-            );
+            $facture->mettreAJourStatut();
+
+            return redirect()
+                ->route('encaissements.index')
+                ->with(
+                    'success',
+                    'Encaissement supprimé avec succès.'
+                );
+        } catch (\Exception $e) {
+
+            return redirect()
+                ->route('encaissements.index')
+                ->with(
+                    'error',
+                    'Une erreur est survenue.'
+                );
+        }
     }
 }

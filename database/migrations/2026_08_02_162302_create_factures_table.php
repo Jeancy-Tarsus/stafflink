@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('contrat_id')
                 ->constrained()
                 ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+                ->restrictOnDelete();
 
             $table->date('date_facture');
 

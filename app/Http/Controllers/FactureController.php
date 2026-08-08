@@ -19,7 +19,7 @@ class FactureController extends Controller
             'contrat.affectation.demande.client',
             'contrat.affectation.travailleur'
         ])
-        
+
             ->latest()
             ->paginate(10);
 
@@ -102,17 +102,32 @@ class FactureController extends Controller
      */
     public function destroy(Facture $facture)
     {
-        if ($facture->encaissements()->count() > 0) {
+        try {
+
+            $facture->delete();
 
             return redirect()
                 ->route('factures.index')
-                ->with('error', 'Impossible de supprimer cette facture car elle possède déjà des encaissements.');
+                ->with(
+                    'success',
+                    'Facture supprimée avec succès.'
+                );
+        } catch (\Illuminate\Database\QueryException $e) {
+
+            return redirect()
+                ->route('factures.index')
+                ->with(
+                    'error',
+                    'Impossible de supprimer cette facture car elle possède déjà des encaissements.'
+                );
+        } catch (\Exception $e) {
+
+            return redirect()
+                ->route('factures.index')
+                ->with(
+                    'error',
+                    'Une erreur est survenue.'
+                );
         }
-
-        $facture->delete();
-
-        return redirect()
-            ->route('factures.index')
-            ->with('success', 'Facture supprimée avec succès.');
     }
 }

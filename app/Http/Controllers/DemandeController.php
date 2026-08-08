@@ -137,10 +137,32 @@ class DemandeController extends Controller
      */
     public function destroy(Demande $demande)
     {
-        $demande->delete();
+        try {
 
-        return redirect()
-            ->route('demandes.index')
-            ->with('success', 'Demande supprimée avec succès.');
+            $demande->delete();
+
+            return redirect()
+                ->route('demandes.index')
+                ->with(
+                    'success',
+                    'Demande supprimée avec succès.'
+                );
+        } catch (\Illuminate\Database\QueryException $e) {
+
+            return redirect()
+                ->route('demandes.index')
+                ->with(
+                    'error',
+                    'Impossible de supprimer cette demande car elle possède déjà des affectations.'
+                );
+        } catch (\Exception $e) {
+
+            return redirect()
+                ->route('demandes.index')
+                ->with(
+                    'error',
+                    'Une erreur est survenue.'
+                );
+        }
     }
 }

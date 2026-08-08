@@ -21,7 +21,8 @@ return new class extends Migration
             // Contrat concerné
             $table->foreignId('contrat_id')
                 ->constrained()
-                ->cascadeOnDelete();
+                ->cascadeOnUpdate()
+                ->restrictOnDelete();
 
             // Date de paiement
             $table->date('date_paiement');

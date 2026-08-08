@@ -134,8 +134,10 @@ class PaiementController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Paiement $paiement)
-    {
+   public function destroy(Paiement $paiement)
+{
+    try {
+
         $paiement->delete();
 
         return redirect()
@@ -144,5 +146,16 @@ class PaiementController extends Controller
                 'success',
                 'Paiement supprimé avec succès.'
             );
+
+    } catch (\Exception $e) {
+
+        return redirect()
+            ->route('paiements.index')
+            ->with(
+                'error',
+                'Une erreur est survenue.'
+            );
+
     }
+}
 }

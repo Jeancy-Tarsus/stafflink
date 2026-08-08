@@ -77,12 +77,32 @@ class MetierController extends Controller
      */
     public function destroy(Metier $metier)
     {
+        try {
 
-        $metier->delete();
+            $metier->delete();
 
+            return redirect()
+                ->route('metiers.index')
+                ->with(
+                    'success',
+                    'Métier supprimé avec succès.'
+                );
+        } catch (\Illuminate\Database\QueryException $e) {
 
-        return redirect()
-            ->route('metiers.index')
-            ->with('success', 'Métier supprimé avec succès.');
+            return redirect()
+                ->route('metiers.index')
+                ->with(
+                    'error',
+                    'Impossible de supprimer ce métier car il est utilisé par un ou plusieurs travailleurs.'
+                );
+        } catch (\Exception $e) {
+
+            return redirect()
+                ->route('metiers.index')
+                ->with(
+                    'error',
+                    'Une erreur est survenue.'
+                );
+        }
     }
 }

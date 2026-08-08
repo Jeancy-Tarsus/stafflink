@@ -301,7 +301,7 @@
 
     </div>
 
-    <div class="card-footer">
+    <div class="d-flex justify-content-center mt-3">
 
         {{ $travailleurs->links('pagination::bootstrap-4') }}
 

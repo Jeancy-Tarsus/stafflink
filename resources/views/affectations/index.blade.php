@@ -395,6 +395,30 @@ function confirmDelete(id)
 
 }
 
+
+// Filtrer les travailleurs selon le métier de la demande
+$('#demande_id').on('change', function () {
+
+    let metier = $(this).find(':selected').data('metier');
+
+    $('#travailleur_id option').hide();
+
+    $('#travailleur_id option:first').show();
+
+    $('#travailleur_id option').each(function () {
+
+        if ($(this).data('metier') == metier) {
+
+            $(this).show();
+
+        }
+
+    });
+
+    $('#travailleur_id').val('');
+
+});
+
 </script>
 
 @stop

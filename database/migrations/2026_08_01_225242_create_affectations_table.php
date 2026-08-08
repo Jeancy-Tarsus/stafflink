@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('demande_id')
                 ->constrained()
                 ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+                ->restrictOnDelete();
 
             // Travailleur affecté
             $table->foreignId('travailleur_id')

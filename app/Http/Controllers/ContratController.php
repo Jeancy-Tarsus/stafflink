@@ -103,10 +103,32 @@ class ContratController extends Controller
      */
     public function destroy(Contrat $contrat)
     {
-        $contrat->delete();
+        try {
 
-        return redirect()
-            ->route('contrats.index')
-            ->with('success', 'Contrat supprimé avec succès.');
+            $contrat->delete();
+
+            return redirect()
+                ->route('contrats.index')
+                ->with(
+                    'success',
+                    'Contrat supprimé avec succès.'
+                );
+        } catch (\Illuminate\Database\QueryException $e) {
+
+            return redirect()
+                ->route('contrats.index')
+                ->with(
+                    'error',
+                    'Impossible de supprimer ce contrat car il possède déjà une facture.'
+                );
+        } catch (\Exception $e) {
+
+            return redirect()
+                ->route('contrats.index')
+                ->with(
+                    'error',
+                    'Une erreur est survenue.'
+                );
+        }
     }
 }

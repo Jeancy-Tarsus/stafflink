@@ -103,10 +103,32 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        $client->delete();
+        try {
 
-        return redirect()
-            ->route('clients.index')
-            ->with('success', 'Client supprimé avec succès.');
+            $client->delete();
+
+            return redirect()
+                ->route('clients.index')
+                ->with(
+                    'success',
+                    'Client supprimé avec succès.'
+                );
+        } catch (\Illuminate\Database\QueryException $e) {
+
+            return redirect()
+                ->route('clients.index')
+                ->with(
+                    'error',
+                    'Impossible de supprimer ce client car il possède des demandes.'
+                );
+        } catch (\Exception $e) {
+
+            return redirect()
+                ->route('clients.index')
+                ->with(
+                    'error',
+                    'Une erreur est survenue.'
+                );
+        }
     }
 }

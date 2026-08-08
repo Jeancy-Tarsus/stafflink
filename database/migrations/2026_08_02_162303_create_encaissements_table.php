@@ -17,8 +17,8 @@ return new class extends Migration
 
             // Facture concernée
             $table->foreignId('facture_id')
-                  ->constrained()
-                  ->cascadeOnDelete();
+                ->constrained()
+                ->restrictOnDelete();
 
             // Date du paiement
             $table->date('date_encaissement');

@@ -141,18 +141,21 @@ class TravailleurController extends Controller
      */
     public function destroy(Travailleur $travailleur)
     {
-        if (
-            $travailleur->photo &&
-            Storage::disk('public')->exists($travailleur->photo)
-        ) {
+        try {
 
-            Storage::disk('public')->delete($travailleur->photo);
+            $travailleur->delete();
+
+            return redirect()
+                ->route('travailleurs.index')
+                ->with('success', 'Travailleur supprimé avec succès.');
+        } catch (\Illuminate\Database\QueryException $e) {
+
+            return redirect()
+                ->route('travailleurs.index')
+                ->with(
+                    'error',
+                    'Impossible de supprimer ce travailleur car il est déjà utilisé dans une affectation.'
+                );
         }
-
-        $travailleur->delete();
-
-        return redirect()
-            ->route('travailleurs.index')
-            ->with('success', 'Travailleur supprimé avec succès.');
     }
 }
